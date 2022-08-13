@@ -15,6 +15,8 @@ function createRandomGames(){
 
 Array.from({length: 50}).forEach(()=> gamesArray.push(createRandomGames()));
 
+console.log("hello world");
+
 const setUp = async()=> {
   try {
     await conn.sync({ force: true });
@@ -40,5 +42,6 @@ const setUp = async()=> {
     console.log(ex);
   }
 };
+console.log('hi')
 
 setUp();
