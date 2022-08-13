@@ -34,7 +34,7 @@ class App extends React.Component{
             </Fragment>
           ): null 
         }
-        <ul>
+        {auth.id ? (<ul>
         { product.map(product=>{
           return (
             <li key={product.id}>
@@ -42,7 +42,8 @@ class App extends React.Component{
             </li>
           )
         })}
-        </ul>
+        </ul>): null}
+       
         
       </main>
     );
