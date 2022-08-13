@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
-app.use(express.json());
-const { User } = require('./db');
+const { User, Product } = require('./db');
 const path = require('path');
-
+app.use(express.json());
 app.use('/dist', express.static('dist'));
 
 
@@ -21,6 +20,15 @@ app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
 app.use('/api/orders', require('./routes/orders'));
 app.use('/api/sessions', require('./routes/sessions'));
+
+app.get('/api/products', async(req,res,next)=>{
+  try{
+    res.status(200).send(await Product.findAll())
+
+  }catch(er){
+    next(er);
+  }
+})
 
 app.use((err, req, res, next)=> {
   console.log(err);
