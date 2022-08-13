@@ -1,6 +1,8 @@
 const app = require('./app');
 const { conn, User } = require('./db');
 
+console.log("hello world");
+
 const setUp = async()=> {
   try {
     await conn.sync({ force: true });
